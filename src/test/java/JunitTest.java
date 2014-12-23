@@ -68,6 +68,7 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
             System.out.println("学号:"+stuinfo.getStucode()+"姓名:"+stuinfo.getStuname()+"性别:"+stuinfo.getSexcode());
         }
     }
+    
     @Test
     public void select2(){
         List<Stuinfo> stuinfolist = stuinfodao.pagelist(0,1);

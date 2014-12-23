@@ -268,4 +268,7 @@
       sexcode = #{sexcode,jdbcType=VARCHAR}
     where stuid = #{stuid,jdbcType=INTEGER}
   </update>
+    <select id="pagelist" parameterType="Map" resultMap="BaseResultMap">
+        select * from stuinfo limit #{pageSize,jdbcType=INTEGER},#{pageIndex,jdbcType=INTEGER}
+    </select>
 </mapper>

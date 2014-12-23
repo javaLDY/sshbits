@@ -93,4 +93,6 @@ public interface StuinfoMapper {
      * @mbggenerated Tue Dec 23 11:31:32 CST 2014
      */
     int updateByPrimaryKey(Stuinfo record);
+
+    List<Stuinfo> pagelist(@Param("pageSize")int pageSize,@Param("pageIndex")int pageIndex);
 }
