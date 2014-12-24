@@ -9,6 +9,7 @@
     -->
     <id column="teacher_id" property="teacherId" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
+      <collection property="student" column="teacher_id" ofType="com.shinowit.entity.Student" select="com.shinowit.dao.mapper.StudentMapper.stuteacherlist"></collection>
   </resultMap>
   <sql id="Example_Where_Clause" >
     <!--
@@ -251,4 +252,5 @@
   <select id="selectMaxPrimaryKeyValue" resultType="java.lang.Integer" >
     select max(teacher_id) from teacher
   </select>
+
 </mapper>

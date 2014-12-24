@@ -11,6 +11,7 @@
     <result column="teacher_id" property="teacherId" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="phone" property="phone" jdbcType="VARCHAR" />
+      <association property="teacher" column="teacher_id" javaType="com.shinowit.entity.Teacher" select="com.shinowit.dao.mapper.TeacherMapper.selectByPrimaryKey"></association>
   </resultMap>
   <sql id="Example_Where_Clause" >
     <!--
@@ -283,4 +284,7 @@
   <select id="selectMaxPrimaryKeyValue" resultType="java.lang.Integer" >
     select max(student_id) from student
   </select>
+    <select id="stuteacherlist" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select * from student where teacher_id=#{teacherId,jdbcType=INTEGER}
+    </select>
 </mapper>

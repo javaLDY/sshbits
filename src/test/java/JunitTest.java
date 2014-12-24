@@ -1,6 +1,10 @@
+import com.shinowit.dao.mapper.StudentMapper;
 import com.shinowit.dao.mapper.StuinfoMapper;
+import com.shinowit.dao.mapper.TeacherMapper;
+import com.shinowit.entity.Student;
 import com.shinowit.entity.Stuinfo;
 import com.shinowit.entity.StuinfoCriteria;
+import com.shinowit.entity.Teacher;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +24,12 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
 
     @Resource
     private StuinfoMapper stuinfodao;
+
+    @Resource
+    private TeacherMapper teadao;
+
+    @Resource
+    private StudentMapper studao;
 
     @Test
     public void test(){
@@ -57,6 +67,7 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
     public void select(){
         Stuinfo stuinfo = stuinfodao.selectByPrimaryKey(21);
         System.out.println("学号:"+stuinfo.getStucode()+"姓名:"+stuinfo.getStuname()+"性别:"+stuinfo.getSexcode());
+
     }
     @Test
     public void select1(){
@@ -74,6 +85,20 @@ public class JunitTest extends AbstractJUnit4SpringContextTests {
         List<Stuinfo> stuinfolist = stuinfodao.pagelist(0,1);
         for(Stuinfo stuinfo: stuinfolist){
             System.out.println("学号:"+stuinfo.getStucode()+"姓名:"+stuinfo.getStuname()+"性别:"+stuinfo.getSexcode());
+        }
+    }
+    @Test
+    public void stuteacher(){
+        Student student = studao.selectByPrimaryKey(1);
+        Teacher tea = new Teacher();
+        System.out.println(student.getTeacherId()+tea.getName()+student.getTeacher().getName());
+    }
+    @Test
+    public void teastuselect(){
+        Teacher tea = teadao.selectByPrimaryKey(1);
+        List<Student> stulist = tea.getStudent();
+        for(Student stu : stulist){
+            System.out.println(stu.getName());
         }
     }
 
